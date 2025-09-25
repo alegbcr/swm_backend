@@ -1,17 +1,23 @@
 {
-  "name": "api-rest-mystore",
+  "name": "andre129_swm_backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/api/index.js",
-    "start": "node src/api/index.js",
+    "dev": "node --watch src/index.js",
+    "start": "node --watch src/index.js",
     "lint": "eslint",
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate",
     "migrations:revert": "sequelize-cli db:migrate:undo",
     "migrations:delete": "sequelize-cli db:migrate:undo:all"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "express",
+    "javscript",
+    "sequelize",
+    "mysql"
+  ],
   "author": "Alexander Gonzalez B <alexgbcr@protonmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -19,7 +25,6 @@
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^3.0.2",
     "prettier": "^2.8.1"
   },
   "dependencies": {
@@ -29,8 +34,6 @@
     "express": "^4.18.2",
     "joi": "^17.7.0",
     "mysql2": "^3.6.5",
-    "pg": "^8.11.3",
-    "pg-hstore": "^2.3.4",
     "sequelize-cli": "^6.6.2",
     "sequelize": "^6.33.0"
   }
