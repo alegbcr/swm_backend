@@ -6,6 +6,4 @@ const sequelize = new Sequelize(config.dbUrl);
 
 setupModels(sequelize);
 
-sequelize.sync();
-
 module.exports = sequelize;
