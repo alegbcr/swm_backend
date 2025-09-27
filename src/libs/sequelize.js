@@ -2,7 +2,14 @@ const { Sequelize } = require('sequelize');
 const { config } = require('../../config/config');
 const setupModels = require('../db/models/index');
 
-const sequelize = new Sequelize(config.dbUrl);
+const sequelize = new Sequelize(config.dbUrl, {
+  dialect: 'mysql',
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
+});
 
 setupModels(sequelize);
 
