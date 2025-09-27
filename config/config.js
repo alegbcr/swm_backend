@@ -10,7 +10,6 @@ const config = {
   dbName: process.env.DB_NAME,
   dbPort: process.env.DB_PORT,
   dbUrl: process.env.DATABASE_URL,
-  dbRnderUrl: process.env.POSTGRES_URL,
 };
 
 module.exports = { config };
