@@ -8,7 +8,7 @@ const {
   boomErrorHandler,
   ormErrorHandler,
 } = require('./middlewares/error.handler');
-const { config } = require('../config/config');
+const { config } = require('../../config/config');
 
 // Inicio del proyecto
 const app = express();
