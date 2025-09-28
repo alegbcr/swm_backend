@@ -36,8 +36,11 @@ app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-// app Listener
-app.listen(process.env.PORT, () => {
-  console.log(`The enviroment is ${config.env} ${config.isProd}`);
-  console.log(`Server is running on http://localhost:${config.port}`);
-});
+// app Listener to development
+// app.listen(process.env.PORT, () => {
+//   console.log(`The enviroment is ${config.env} ${config.isProd}`);
+//   console.log(`Server is running on http://localhost:${config.port}`);
+// });
+
+// trabajo en produccion en vercel
+module.exports = app;
