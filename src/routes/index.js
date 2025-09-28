@@ -1,6 +1,7 @@
 const express = require('express');
 
-const formRoute = require('./contactForm.router');
+const homeRoute = require('./homeRoute.router');
+const contactForm = require('./contactForm.router');
 const customerContact = require('./customerContact.router');
 
 function routerApi(app) {
@@ -8,7 +9,8 @@ function routerApi(app) {
 
   // Web Site
   app.use('/', router);
-  router.use('/contact-form', formRoute);
+  router.use('/', homeRoute);
+  router.use('/contact-form', contactForm);
 
   // API REST
   router.use('/api/customer-contact', customerContact);
