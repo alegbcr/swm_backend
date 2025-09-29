@@ -1,6 +1,6 @@
 const express = require('express');
 
-const homeRoute = require('./homeRoute.router');
+// const homeRoute = require('./homeRoute.router');
 const contactForm = require('./contactForm.router');
 const customerContact = require('./customerContact.router');
 
@@ -9,7 +9,7 @@ function routerApi(app) {
 
   // Web Site
   app.use('/', router);
-  router.use('/', homeRoute);
+  // router.use('/', homeRoute);
   router.use('/contact-form', contactForm);
 
   // API REST
