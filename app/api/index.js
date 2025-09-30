@@ -30,17 +30,19 @@ app.use(cors(options));
 // routing
 routerApi(app);
 
-// middleware
+// middlewares de error
 app.use(logErrors);
 app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-// app Listener to development
-app.listen(process.env.PORT, () => {
-  console.log(`The enviroment is ${config.env} ${config.isProd}`);
-  console.log(`Server is running on http://localhost:${config.port}`);
-});
+// 👇 Solo escuchamos si no estamos en Vercel
+if (require.main === module) {
+  app.listen(config.port || 3000, () => {
+    console.log(`The environment is ${config.env} ${config.isProd}`);
+    console.log(`Server is running on http://localhost:${config.port || 3000}`);
+  });
+}
 
-// trabajo en produccion en vercel
-// module.exports = app;
+// 👇 Exportamos para Vercel (serverless)
+module.exports = app;
