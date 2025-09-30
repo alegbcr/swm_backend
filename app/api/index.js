@@ -37,12 +37,12 @@ app.use(boomErrorHandler);
 app.use(errorHandler);
 
 // 👇 Solo escuchamos si no estamos en Vercel
-if (require.main === module) {
-  app.listen(config.port || 3000, () => {
-    console.log(`The environment is ${config.env} ${config.isProd}`);
-    console.log(`Server is running on http://localhost:${config.port || 3000}`);
-  });
-}
+// if (require.main === module) {
+//   app.listen(config.port || 3000, () => {
+//     console.log(`The environment is ${config.env} ${config.isProd}`);
+//     console.log(`Server is running on http://localhost:${config.port || 3000}`);
+//   });
+// }
 
 // 👇 Exportamos para Vercel (serverless)
 module.exports = app;
