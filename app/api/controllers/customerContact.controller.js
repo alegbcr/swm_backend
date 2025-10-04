@@ -13,7 +13,7 @@ exports.getInfoRegister = async (req, res) => {
     res.status(200).json(infoRegistered);
   } catch (err) {
     console.error('Error handling user data:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Error from GET' });
   }
 };
 
@@ -34,7 +34,7 @@ exports.registerCustomerInfo = async (req, res) => {
     res.status(201).json(customer);
   } catch (err) {
     console.error('Error saving customer data:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Error from POST' });
   }
 };
 
