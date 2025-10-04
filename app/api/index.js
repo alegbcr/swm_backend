@@ -16,7 +16,12 @@ const app = express();
 
 app.use(express.json());
 
-const whitelist = ['http://localhost:3000', 'http://localhost:5173'];
+const whitelist = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://stratawealthmanagement.com/',
+  'https://stratawealthmanagement.com/',
+];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
