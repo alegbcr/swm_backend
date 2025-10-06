@@ -1,19 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-const routerApi = require('./routes');
+const path = require('path');
+const routerApi = require('./api/routes');
 
 const {
   logErrors,
   errorHandler,
   boomErrorHandler,
   ormErrorHandler,
-} = require('./middlewares/error.handler');
-const { config } = require('../config/config');
+} = require('./api/middlewares/error.handler');
+const { config } = require('./config/config');
 
 // Inicio del proyecto
 const app = express();
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 const whitelist = ['http://localhost:3000', 'http://localhost:5173'];
 const options = {

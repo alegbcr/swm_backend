@@ -2,11 +2,12 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 
-router.use(express.static(path.join(__dirname, '../../public')));
-
 // Route to serve the HTML form
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../public/index.html'));
+  // CORRECCIÓN FINAL: Solo necesitamos retroceder dos niveles (../..) para salir de
+  // 'routes/' y 'api/' y acceder a la carpeta 'public/' en la raíz.
+  // path.join(__dirname, '..', '..') resuelve a: /home/.../node_backend_mysql/
+  res.sendFile(path.join(__dirname, '..', '..', 'public', 'form', 'form.html'));
 });
 
 module.exports = router;

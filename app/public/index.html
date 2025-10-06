@@ -3,116 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulario de Registro</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Api Strata Wealth Management</title>
   </head>
-
   <body>
-    <h2>Formulario de Registro</h2>
-    <p>
-      Para cumplir con las regulaciones internacionales contra el lavado de
-      dinero, es necesario completar el siguiente formulario.
+    <h1 class="title">Api Strata Wealth Management</h1>
+    <p class="description">
+      Bienvenido a Strata Wealth Management API. Esta es una API desarrollada
+      con Node.js para gestionar la información de los nuevos clientes.
     </p>
-
-    <form id="registrationForm">
-      <!-- Required fields -->
-      <label for="fname">Nombre</label>
-      <input type="text" id="fname" name="fname" required />
-
-      <label for="lname">Apellido</label>
-      <input type="text" id="lname" name="lname" required />
-
-      <label for="phone">Número de Telefono</label>
-      <input type="number" id="phone" name="phone" required />
-
-      <label for="email">Correo Electronico</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="address">Dirección de Residencia</label>
-      <input type="text" id="address" name="address" required />
-
-      <!-- Optional fields -->
-      <label for="birth">Fecha de Nacimiento</label>
-      <input type="date" id="birth" name="birth" />
-
-      <label for="nationality">Nacionalidad</label>
-      <input type="text" id="nationality" name="nationality" />
-
-      <label for="occupation">Ocupación</label>
-      <input type="text" id="occupation" name="occupation" />
-
-      <label for="advisor">Nombre del Asesor</label>
-      <input type="text" id="advisor" name="advisor" />
-
-      <label for="income">Ingresos Mensuales USD</label>
-      <input type="number" id="income" name="income" />
-
-      <label for="networth">Patrimonio Neto USD</label>
-      <input type="number" id="networth" name="networth" />
-
-      <label for="openingAccount">Monto de Cueta de Apertura USD</label>
-      <input type="number" id="openingAccount" name="openingAccount" />
-
-      <label for="accountType">Tipo de Cuenta</label>
-      <select id="accountType" name="accountType">
-        <option value="">Seleccionar Valor</option>
-        <option value="individual">Individual</option>
-        <option value="joint">Joint</option>
-        <option value="corporate">Corporativa</option>
-      </select>
-
-      <label for="risk">Capital de riesgo disponible en USD</label>
-      <input type="number" id="risk" name="risk" />
-
-      <label for="experience">Experiencia de Inversión</label>
-      <select id="experience" name="experience">
-        <option value="">Seleccionar Valor</option>
-        <option value="beginner">Iniciante</option>
-        <option value="intermediate">Intermedio</option>
-        <option value="advanced">Avanzado</option>
-      </select>
-
-      <label for="purpose">Proposito de la Cuenta</label>
-      <select id="purpose" name="purpose">
-        <option value="">Seleccionar Valor</option>
-        <option value="speculation">Especulación</option>
-        <option value="retirement">Retiro</option>
-        <option value="wealth">Crecimiento de Patrimonio</option>
-      </select>
-
-      <label for="accountBefore"
-        >Actualmente tiene o tuvo una cuenta con nosotros antes?</label
-      >
-      <select id="accountBefore" name="accountBefore">
-        <option value="">Seleccionar Valor</option>
-        <option value="yes">Sí</option>
-        <option value="no">No</option>
-      </select>
-
-      <label for="beneficiary">¿Quieres designar a un beneficiario?</label>
-      <select id="beneficiary" name="beneficiary">
-        <option value="">Seleccionar Valor</option>
-        <option value="yes">Sí</option>
-        <option value="no">No</option>
-      </select>
-
-      <label for="bank">Nombre del banco desde donde está depositando</label>
-      <input type="text" id="bank" name="bank" />
-
-      <label for="signature">Firma</label>
-      <textarea id="signature" name="signature"></textarea>
-
-      <label for="sigdate">Firma Fecha</label>
-      <input type="date" id="sigdate" name="sigdate" />
-
-      <!-- <div style="margin-top: 15px">
-        <input type="checkbox" id="robot" name="robot" required />
-        <label for="robot">I am not a robot</label>
-      </div> -->
-
-      <button type="submit" class="submit-btn">Submit</button>
-    </form>
-
-    <script src="script.js"></script>
+    <h2 class="subtitle">Endpoints</h2>
+    <ul class="endpoint-list">
+      <li class="endpoint-item">
+        <p>Regresa una lista de todos los clientes.</p>
+        <code>
+          <strong class="get">GET</strong
+          >http://vps.stratawealthmanagement.com:3000//api/v1/customer-contact</code
+        >
+      </li>
+      <li class="endpoint-item">
+        <p>Crea un nuevo cliente.</p>
+        <code>
+          <strong class="post">POST</strong
+          >http://vps.stratawealthmanagement.com:3000//api/v1/customer-contact
+        </code>
+      </li>
+      <li class="endpoint-item">
+        <p>Regresa los detalles de un cliente específico por ID.</p>
+        <code>
+          <strong class="get">GET </strong
+          >http://vps.stratawealthmanagement.com:3000//api/v1/customer-contact/{id}</code
+        >
+      </li>
+      <li class="endpoint-item">
+        <p>Actualiza la información de un cliente específico por ID.</p>
+        <code>
+          <strong class="patch">PATCH</strong
+          >http://vps.stratawealthmanagement.com:3000//api/v1/customer-contact/{id}
+        </code>
+      </li>
+      <li class="endpoint-item">
+        <p>Elimina un cliente específico por ID.</p>
+        <code>
+          <strong class="delete">DELETE</strong
+          >http://vps.stratawealthmanagement.com:3000//api/v1/customer-contact/{id}
+        </code>
+      </li>
+    </ul>
   </body>
 </html>

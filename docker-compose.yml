@@ -1,8 +1,12 @@
-version: "3.3"
+version: "3.9"
 
 services:
+  # ======================
+  # POSTGRESQL + PGADMIN
+  # ======================
   postgres:
     image: postgres:13
+    container_name: postgres_db
     environment:
       - POSTGRES_DB=my_store
       - POSTGRES_USER=alex
@@ -11,17 +15,28 @@ services:
       - 5432:5432
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@mail.com
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - 5050:80
+    depends_on:
+      - postgres
+    networks:
+      - app_network
 
+  # ======================
+  # MYSQL + PHPMYADMIN
+  # ======================
   mysql:
     image: mysql:8.0
+    container_name: mysql_db
     environment:
       - MYSQL_DATABASE=my_store
       - PMA_USER=root
@@ -30,11 +45,52 @@ services:
       - 3306:3306
     volumes:
       - ./mysql_data:/var/lib/mysql
+    networks:
+      - app_network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
     environment:
       - PMA_HOST=mysql
       - MYSQL_ROOT_PASSWORD=admin123
     ports:
       - 8080:80
+    depends_on:
+      - mysql
+    networks:
+      - app_network
+
+  # ======================
+  # NODE.JS APP
+  # ======================
+  nodeapp:
+    build:
+      context: . # tu código estará dentro de esta carpeta
+      dockerfile: Dockerfile
+    container_name: node_app
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=alex
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=my_store
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=admin123
+      - MYSQL_DB=my_store
+    depends_on:
+      - postgres
+      - mysql
+    networks:
+      - app_network
+    restart: always
+
+# ======================
+# NETWORK
+# ======================
+networks:
+  app_network:
+    driver: bridge
