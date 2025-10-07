@@ -28,7 +28,7 @@
     delete data.robot;
 
     try {
-      const res = await fetch('/api/customer-contact', {
+      const res = await fetch('http://localhost:3000/api/v1/customer-contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

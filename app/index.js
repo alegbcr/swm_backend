@@ -14,8 +14,8 @@ const { config } = require('./config/config');
 // Inicio del proyecto
 const app = express();
 
-app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
 const whitelist = ['http://localhost:3000', 'http://localhost:5173'];
 const options = {
@@ -39,9 +39,9 @@ app.use(boomErrorHandler);
 app.use(errorHandler);
 
 // app Listener to development
-app.listen(process.env.PORT, () => {
+app.listen(config.nodePort, () => {
   console.log(`The enviroment is ${config.env} ${config.isProd}`);
-  console.log(`Server is running on http://localhost:${config.port}`);
+  console.log(`Server is running on http://localhost:${config.nodePort}`);
 });
 
 // trabajo en produccion en vercel

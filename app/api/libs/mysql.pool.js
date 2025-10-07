@@ -7,11 +7,11 @@ if (config.isProd) {
   URI = mysql.createPool(config.dbUrl); // URL de MySQL en prod
 } else {
   pool = mysql.createPool({
-    host: config.dbHost,
-    user: config.dbUser,
-    password: config.dbPassword,
-    database: config.dbName,
-    port: config.dbPort,
+    host: config.dbHost, // -> 'mysql'
+    user: config.dbUser, // -> 'root'
+    password: config.dbPassword, // -> 'admin123'
+    database: config.dbName, // -> 'my_store'
+    port: config.dbPort, // -> 3306
   });
 }
 

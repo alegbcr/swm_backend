@@ -2,11 +2,17 @@ const { config } = require('../../config/config');
 
 module.exports = {
   development: {
-    url: config.dbUrl || 'sqlite::memory:',
-    dialect: 'mysql',
+    username: config.dbUser,
+    password: config.dbPassword,
+    database: config.dbName,
+    host: config.dbHost, // o 'localhost'
+    dialect: config.dbHost,
   },
   production: {
-    url: config.dbUrl,
-    dialect: 'mysql',
+    username: config.dbUser,
+    password: config.dbPassword,
+    database: config.dbName,
+    host: config.dbHost, // dentro del contenedor
+    dialect: config.dbHost,
   },
 };

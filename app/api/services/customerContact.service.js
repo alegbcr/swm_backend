@@ -11,6 +11,7 @@ class customerContactService {
 
   async find() {
     const allUsers = await models.CustomerContact.findAll();
+    console.log(allUsers);
     return allUsers;
   }
 

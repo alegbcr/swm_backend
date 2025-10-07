@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node --watch app/index.js",
     "start": "node app/index.js",
+    "debug": "node --inspect-brk=0.0.0.0:9229 app/index.js",
     "lint": "eslint",
     "migrations:generate": "sequelize-cli migration:generate --name",
     "migrations:run": "sequelize-cli db:migrate",
