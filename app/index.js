@@ -17,17 +17,32 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-const whitelist = ['http://localhost:3000', 'http://localhost:5173'];
+const whitelist = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://162.240.179.241:3000',
+  'https://stratawealthmanagement.com',
+  'https://www.stratawealthmanagement.com',
+  'https://vps.stratawealthmanagement.com',
+];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
       callback(null, true);
     } else {
+      console.log('❌ Bloqueado por CORS:', origin);
       callback(new Error('No permitido'));
     }
   },
+  credentials: true, // si usas cookies o auth
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
+
+// Activar CORS global
 app.use(cors(options));
+// Habilitar preflight requests para todas las rutas
+app.options('*', cors(options));
 
 // routing
 routerApi(app);
